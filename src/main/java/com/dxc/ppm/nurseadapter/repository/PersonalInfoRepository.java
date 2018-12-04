@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonalInfoRepository extends JpaRepository<PersonalInfoEntity, Long> {
+    PersonalInfoEntity findByPatientIdAndDeleted(String patientId, boolean deleted);
 }

@@ -11,7 +11,7 @@ public class PersonalInfoEntity {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "PATIENT_ID", nullable = false)
+    @Column(name = "PATIENTID", nullable = false)
     private String patientId;
 
     @Column(name = "FULL_NAME", nullable = false)

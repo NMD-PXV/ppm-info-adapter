@@ -92,6 +92,9 @@ definitions:
   PersonalInfo:
     type: "object"
     properties:
+      patientId:
+        type: "string"
+        example: "3b8acd05-c991-45c5-90d5-ef8605575623"
       fullName:
         type: "string"
         example: "Nguyen Minh Duc"
@@ -100,7 +103,7 @@ definitions:
         example: "3/115 Binh Duong"
       dob:
         type: "string"
-        format: "date-time"
+        format: "date"
         example: "1995-09-18"
       pob:
         type: "string"
