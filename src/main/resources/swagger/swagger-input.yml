@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  description: "Patients Profile Management"
+  version: "1.0.0"
+  title: "Patients Profile Management"
+tags:
+- name: "patients"
+  description: "Everything about customers"
+schemes:
+- "https"
+- "http"
+paths:
+  /v1/patients/info/bulk:
+    post:
+      tags:
+      - "patients"
+      summary: "Upsert multi patient personal info"
+      description: "Upsert patient personal info"
+      operationId: "upsertMultiPatientInfos"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "infos"
+        description: "List of patient personal info"
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: "#/definitions/PersonalInfo"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+  /v1/patients/info:
+    post:
+      tags:
+      - "patients"
+      summary: "Upsert patient personal info"
+      description: "Upsert patient personal info"
+      operationId: "upsert"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "info"
+        description: "Patient personal info"
+        required: true
+        schema:
+          $ref: "#/definitions/PersonalInfo"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "string"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+  /v1/patients/{patientId}/info:
+    get:
+      tags:
+      - "patients"
+      summary: "Get patient personal info by id"
+      description: "Get patient personal info by id"
+      operationId: "readPatientInfoById"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "patientId"
+        description: "Id of patient to get"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/PersonalInfo"
+        400:
+          description: "Invalid input"
+        404:
+          description: "PatientEntity not found"
+        500:
+          description: "Internal server error"
+definitions:
+  PersonalInfo:
+    type: "object"
+    properties:
+      fullName:
+        type: "string"
+        example: "Nguyen Minh Duc"
+      address:
+        type: "string"
+        example: "3/115 Binh Duong"
+      dob:
+        type: "string"
+        format: "date-time"
+        example: "1995-09-18"
+      pob:
+        type: "string"
+        example: "Binh Duong"
+      sex:
+        type: "string"
+        example: "M"
