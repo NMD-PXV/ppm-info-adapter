@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.dxc.ppm.nurseadapter.common.PersonalInfoStorageError.*;
 
@@ -41,8 +42,21 @@ public class PersonalInfoService {
             return create(personalInfo);
 
         PersonalInfoUlti.info2Entity(personalInfoEntity, personalInfo);
-        personalInfoEntity.setPatientId(patientId);
         repository.saveAndFlush(personalInfoEntity);
         return patientId;
+    }
+
+    public PersonalInfo readPatientInfoById(String patientId) {
+        PersonalInfoEntity entity = repository.findByPatientIdAndDeleted(patientId, false);
+        if (entity == null)
+            throw new PersonalInfoException(DATA_NOT_FOUND, patientId);
+        return PersonalInfoUlti.entity2Info(entity);
+    }
+
+    public String upsertMultiPatientInfos(List<PersonalInfo> infos) {
+        ArrayList<String> ret = new ArrayList<>();
+        for(PersonalInfo info : infos)
+            ret.add(upsert(info));
+        return ret.toString();
     }
 }

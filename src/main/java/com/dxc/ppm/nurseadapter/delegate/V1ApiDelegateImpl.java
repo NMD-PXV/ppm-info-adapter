@@ -15,7 +15,7 @@ public class V1ApiDelegateImpl implements V1ApiDelegate {
     private PersonalInfoService service;
     @Override
     public ResponseEntity<PersonalInfo> readPatientInfoById(String patientId) {
-        return null;
+        return ResponseEntity.ok(service.readPatientInfoById(patientId));
     }
 
     @Override
@@ -25,6 +25,6 @@ public class V1ApiDelegateImpl implements V1ApiDelegate {
 
     @Override
     public ResponseEntity<String> upsertMultiPatientInfos(List<PersonalInfo> infos) {
-        return null;
+        return ResponseEntity.ok(service.upsertMultiPatientInfos(infos));
     }
 }

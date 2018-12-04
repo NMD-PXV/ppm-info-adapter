@@ -14,8 +14,11 @@ public class PersonalInfoEntity {
     @Column(name = "PATIENTID", nullable = false)
     private String patientId;
 
-    @Column(name = "FULL_NAME", nullable = false)
+    @Column(name = "FULLNAME", nullable = false)
     private String fullName;
+
+    @Column(name = "ADDRESS", nullable = false)
+    private String address;
 
     @Column(name = "DOB", nullable = false)
     private Date dob;
@@ -28,6 +31,14 @@ public class PersonalInfoEntity {
 
     @Column(name = "DELETED", nullable = false)
     private boolean deleted;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
