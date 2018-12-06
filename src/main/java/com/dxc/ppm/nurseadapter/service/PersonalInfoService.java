@@ -29,7 +29,6 @@ public class PersonalInfoService {
         PersonalInfoUlti.info2Entity(personalInfoEntity, personalInfo);
         personalInfoEntity.setPatientId(personalInfo.getPatientId());
         personalInfoEntity.setDeleted(false);
-        logger.info("----------------------------------------------------------------------");
         repository.saveAndFlush(personalInfoEntity);
         return personalInfo.getPatientId();
     }
@@ -49,13 +48,13 @@ public class PersonalInfoService {
     public PersonalInfo readPatientInfoById(String patientId) {
         PersonalInfoEntity entity = repository.findByPatientIdAndDeleted(patientId, false);
         if (entity == null)
-            throw new PersonalInfoException(DATA_NOT_FOUND, patientId);
+            throw new PersonalInfoException(PATIENT_NOT_FOUND, patientId);
         return PersonalInfoUlti.entity2Info(entity);
     }
 
     public String upsertMultiPatientInfos(List<PersonalInfo> infos) {
         ArrayList<String> ret = new ArrayList<>();
-        for(PersonalInfo info : infos)
+        for (PersonalInfo info : infos)
             ret.add(upsert(info));
         return ret.toString();
     }
