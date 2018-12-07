@@ -16,6 +16,7 @@ public class PersonalInfoUlti {
 
     public static PersonalInfo entity2Info(PersonalInfoEntity entity){
         PersonalInfo info = new PersonalInfo();
+        info.setPatientId(entity.getPatientId());
         info.setAddress(entity.getAddress());
         info.setDob(LocalDate.fromDateFields(entity.getDob()));
         info.setFullName(entity.getFullName());

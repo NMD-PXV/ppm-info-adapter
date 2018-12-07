@@ -1,11 +1,11 @@
 swagger: "2.0"
 info:
-  description: "Patients Profile Management"
+  description: "PPM Nurse Adapter"
   version: "1.0.0"
-  title: "Patients Profile Management"
+  title: "PPM Nurse Adapter"
 tags:
 - name: "patients"
-  description: "Everything about customers"
+  description: "Everything about Nurse Adapter"
 schemes:
 - "https"
 - "http"
@@ -62,6 +62,31 @@ paths:
           description: "Invalid input"
         500:
           description: "Internal server error"
+
+  /v1/patients/info/names:
+    get:
+      tags:
+      - "patients"
+      summary: "search names of patients"
+      description: "search names of patients"
+      operationId: "searchPatientIdsByName"
+      parameters:
+      - in: "query"
+        name: "patientName"
+        description: "name of a patient, note that name of patients can be the same"
+        required: "true"
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
   /v1/patients/{patientId}/info:
     get:
       tags:
@@ -94,7 +119,6 @@ definitions:
     properties:
       patientId:
         type: "string"
-        example: "3b8acd05-c991-45c5-90d5-ef8605575623"
       fullName:
         type: "string"
         example: "Nguyen Minh Duc"

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.dxc.ppm.nurseadapter.common.PersonalInfoStorageError.*;
 
@@ -25,12 +26,13 @@ public class PersonalInfoService {
 
     @Transactional
     public String create(PersonalInfo personalInfo) {
+        String patientId = UUID.randomUUID().toString();
         PersonalInfoEntity personalInfoEntity = new PersonalInfoEntity();
         PersonalInfoUlti.info2Entity(personalInfoEntity, personalInfo);
-        personalInfoEntity.setPatientId(personalInfo.getPatientId());
+        personalInfoEntity.setPatientId(patientId);
         personalInfoEntity.setDeleted(false);
         repository.saveAndFlush(personalInfoEntity);
-        return personalInfo.getPatientId();
+        return patientId;
     }
 
     @Transactional
@@ -58,4 +60,10 @@ public class PersonalInfoService {
             ret.add(upsert(info));
         return ret.toString();
     }
+
+    public List<String> searchPatientIdsByName(String patientName) {
+        if(patientName == null) throw new PersonalInfoException(INVALID_INPUT);
+        return repository.searchByName(patientName);
+    }
+
 }
