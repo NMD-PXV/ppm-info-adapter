@@ -54,13 +54,6 @@ public class PersonalInfoService {
         return PersonalInfoUlti.entity2Info(entity);
     }
 
-    public String upsertMultiPatientInfos(List<PersonalInfo> infos) {
-        ArrayList<String> ret = new ArrayList<>();
-        for (PersonalInfo info : infos)
-            ret.add(upsert(info));
-        return ret.toString();
-    }
-
     public List<String> searchPatientIdsByName(String patientName) {
         if(patientName == null) throw new PersonalInfoException(INVALID_INPUT);
         return repository.searchByName(patientName);

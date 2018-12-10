@@ -10,33 +10,6 @@ schemes:
 - "https"
 - "http"
 paths:
-  /v1/patients/info/bulk:
-    post:
-      tags:
-      - "patients"
-      summary: "Upsert multi patient personal info"
-      description: "Upsert patient personal info"
-      operationId: "upsertMultiPatientInfos"
-      consumes:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "infos"
-        description: "List of patient personal info"
-        required: true
-        schema:
-          type: array
-          items:
-            $ref: "#/definitions/PersonalInfo"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            type: "string"
-        400:
-          description: "Invalid input"
-        500:
-          description: "Internal server error"
   /v1/patients/info:
     post:
       tags:
