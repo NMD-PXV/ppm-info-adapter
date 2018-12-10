@@ -19,9 +19,10 @@ public class V1ApiDelegateImpl implements V1ApiDelegate {
     }
 
     @Override
-    public ResponseEntity<List<String>> searchPatientIdsByName(String patientName) {
+    public ResponseEntity<List<PersonalInfo>> searchPatientIdsByName(String patientName) {
         return ResponseEntity.ok(service.searchPatientIdsByName(patientName));
     }
+
 
     @Override
     public ResponseEntity<String> upsert(PersonalInfo info) {

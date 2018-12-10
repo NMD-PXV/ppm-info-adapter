@@ -15,7 +15,7 @@ public class PersonalInfoEntity {
     private String patientId;
 
     @Column(name = "FULLNAME", nullable = false)
-    private String fullName;
+    private String fullname;
 
     @Column(name = "ADDRESS", nullable = false)
     private String address;
@@ -56,12 +56,12 @@ public class PersonalInfoEntity {
         this.patientId = patientId;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public Date getDob() {

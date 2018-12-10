@@ -43,6 +43,7 @@ paths:
       summary: "search names of patients"
       description: "search names of patients"
       operationId: "searchPatientIdsByName"
+      produces: "application/json"
       parameters:
       - in: "query"
         name: "patientName"
@@ -55,7 +56,8 @@ paths:
           schema:
             type: "array"
             items:
-              type: "string"
+              $ref: "#/definitions/PersonalInfo"
+
         400:
           description: "Invalid input"
         500:
@@ -92,7 +94,7 @@ definitions:
     properties:
       patientId:
         type: "string"
-      fullName:
+      fullname:
         type: "string"
         example: "Nguyen Minh Duc"
       address:

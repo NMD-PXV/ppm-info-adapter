@@ -7,7 +7,7 @@ import org.joda.time.LocalDate;
 public class PersonalInfoUlti {
     public static void info2Entity(PersonalInfoEntity entity, PersonalInfo info){
         entity.setDob(info.getDob().toDate());
-        entity.setFullName(info.getFullName());
+        entity.setFullname(info.getFullname());
         entity.setSex(info.getSex());
         entity.setAddress(info.getAddress());
         entity.setPob(info.getPob());
@@ -19,7 +19,7 @@ public class PersonalInfoUlti {
         info.setPatientId(entity.getPatientId());
         info.setAddress(entity.getAddress());
         info.setDob(LocalDate.fromDateFields(entity.getDob()));
-        info.setFullName(entity.getFullName());
+        info.setFullname(entity.getFullname());
         info.setPatientId(entity.getPatientId());
         info.setSex(entity.getSex());
         info.setPob(entity.getPob());

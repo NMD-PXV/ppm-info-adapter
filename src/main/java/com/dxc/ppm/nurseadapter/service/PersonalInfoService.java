@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static com.dxc.ppm.nurseadapter.common.PersonalInfoStorageError.*;
 
@@ -54,9 +55,9 @@ public class PersonalInfoService {
         return PersonalInfoUlti.entity2Info(entity);
     }
 
-    public List<String> searchPatientIdsByName(String patientName) {
-//        if(patientName == null) throw new PersonalInfoException(INVALID_INPUT);
-        return repository.searchByName(patientName);
+    public List<PersonalInfo> searchPatientIdsByName(String patientName) {
+        return repository.searchByName(patientName).stream().map(PersonalInfoUlti::entity2Info)
+                .collect(Collectors.toList());
     }
 
 }
