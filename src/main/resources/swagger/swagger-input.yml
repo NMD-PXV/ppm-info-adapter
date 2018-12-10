@@ -47,7 +47,7 @@ paths:
       - in: "query"
         name: "patientName"
         description: "name of a patient, note that name of patients can be the same"
-        required: "true"
+        required: "false"
         type: "string"
       responses:
         200:

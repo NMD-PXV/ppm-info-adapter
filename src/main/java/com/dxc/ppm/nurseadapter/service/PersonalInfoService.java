@@ -55,7 +55,7 @@ public class PersonalInfoService {
     }
 
     public List<String> searchPatientIdsByName(String patientName) {
-        if(patientName == null) throw new PersonalInfoException(INVALID_INPUT);
+//        if(patientName == null) throw new PersonalInfoException(INVALID_INPUT);
         return repository.searchByName(patientName);
     }
 
