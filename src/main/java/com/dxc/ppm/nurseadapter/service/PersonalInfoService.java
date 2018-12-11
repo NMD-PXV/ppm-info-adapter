@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -25,6 +24,7 @@ public class PersonalInfoService {
 
     private Logger logger = LoggerFactory.getLogger(PersonalInfoService.class);
 
+    //TODO validate
     @Transactional
     public String create(PersonalInfo personalInfo) {
         String patientId = UUID.randomUUID().toString();
@@ -55,8 +55,15 @@ public class PersonalInfoService {
         return PersonalInfoUlti.entity2Info(entity);
     }
 
-    public List<PersonalInfo> searchPatientIdsByName(String patientName) {
-        return repository.searchByName(patientName).stream().map(PersonalInfoUlti::entity2Info)
+    public List<PersonalInfo> searchPatientsByName(String patientName) {
+        if(patientName == null)
+            return repository.findAll()
+                    .stream()
+                    .map(PersonalInfoUlti::entity2Info)
+                    .collect(Collectors.toList());
+        return repository.searchByName(patientName)
+                .stream()
+                .map(PersonalInfoUlti::entity2Info)
                 .collect(Collectors.toList());
     }
 

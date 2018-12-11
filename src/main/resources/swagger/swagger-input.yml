@@ -42,7 +42,7 @@ paths:
       - "patients"
       summary: "search names of patients"
       description: "search names of patients"
-      operationId: "searchPatientIdsByName"
+      operationId: "searchPatientsByName"
       produces: "application/json"
       parameters:
       - in: "query"
