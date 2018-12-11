@@ -13,6 +13,13 @@ import java.util.List;
 public class V1ApiDelegateImpl implements V1ApiDelegate {
     @Autowired
     private PersonalInfoService service;
+
+
+    @Override
+    public ResponseEntity<List<PersonalInfo>> readMultiPatientInfoById(List<String> ids) {
+        return ResponseEntity.ok(service.readMultiPatientInfoById(ids));
+    }
+
     @Override
     public ResponseEntity<PersonalInfo> readPatientInfoById(String patientId) {
         return ResponseEntity.ok(service.readPatientInfoById(patientId));

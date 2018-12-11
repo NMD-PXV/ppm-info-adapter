@@ -13,24 +13,53 @@ paths:
   /v1/patients/info:
     post:
       tags:
-      - "patients"
+        - "patients"
       summary: "Upsert patient personal info"
       description: "Upsert patient personal info"
       operationId: "upsert"
       consumes:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "info"
-        description: "Patient personal info"
-        required: true
-        schema:
-          $ref: "#/definitions/PersonalInfo"
+        - in: "body"
+          name: "info"
+          description: "Patient personal info"
+          required: true
+          schema:
+            $ref: "#/definitions/PersonalInfo"
       responses:
         200:
           description: "OK"
           schema:
             type: "string"
+        400:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+  /v1/patients/info/bulk:
+    post:
+      tags:
+        - "patients"
+      summary: "find multi patient personal info"
+      description: "find multi patient personal info"
+      operationId: "readMultiPatientInfoById"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "ids"
+          description: "ids of patient"
+          required: true
+          schema:
+            type: "array"
+            items:
+              type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PersonalInfo"
         400:
           description: "Invalid input"
         500:

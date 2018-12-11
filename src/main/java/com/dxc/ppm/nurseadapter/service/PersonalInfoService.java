@@ -67,4 +67,10 @@ public class PersonalInfoService {
                 .collect(Collectors.toList());
     }
 
+    public List<PersonalInfo> readMultiPatientInfoById(List<String> ids){
+        return repository.findMultiByIds(ids).
+                stream().
+                map(PersonalInfoUlti::entity2Info).
+                collect(Collectors.toList());
+    }
 }

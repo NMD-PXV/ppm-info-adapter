@@ -15,4 +15,7 @@ public interface PersonalInfoRepository extends JpaRepository<PersonalInfoEntity
 
     @Query("select p from PersonalInfoEntity p where p.fullname like CONCAT('%',:name,'%')")
     List<PersonalInfoEntity> searchByName(@Param("name") String name);
+
+    @Query("select p from PersonalInfoEntity p where p.id in :ids")
+    List<PersonalInfoEntity> findMultiByIds(@Param("ids") List<String> ids);
 }
