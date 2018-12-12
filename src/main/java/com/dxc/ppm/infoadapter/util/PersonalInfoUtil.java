@@ -1,10 +1,10 @@
-package com.dxc.ppm.infoadapter.ulti;
+package com.dxc.ppm.infoadapter.util;
 
 import com.dxc.ppm.infoadapter.api.model.PersonalInfo;
 import com.dxc.ppm.infoadapter.model.PersonalInfoEntity;
 import org.joda.time.LocalDate;
 
-public class PersonalInfoUlti {
+public class PersonalInfoUtil {
     public static void info2Entity(PersonalInfoEntity entity, PersonalInfo info){
         entity.setDob(info.getDob().toDate());
         entity.setFullname(info.getFullname());

@@ -4,7 +4,7 @@ import com.dxc.ppm.infoadapter.api.model.PersonalInfo;
 import com.dxc.ppm.infoadapter.exception.PersonalInfoException;
 import com.dxc.ppm.infoadapter.model.PersonalInfoEntity;
 import com.dxc.ppm.infoadapter.repository.PersonalInfoRepository;
-import com.dxc.ppm.infoadapter.ulti.PersonalInfoUlti;
+import com.dxc.ppm.infoadapter.util.PersonalInfoUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class PersonalInfoService {
     public String create(PersonalInfo personalInfo) {
         String patientId = UUID.randomUUID().toString();
         PersonalInfoEntity personalInfoEntity = new PersonalInfoEntity();
-        PersonalInfoUlti.info2Entity(personalInfoEntity, personalInfo);
+        PersonalInfoUtil.info2Entity(personalInfoEntity, personalInfo);
         personalInfoEntity.setPatientId(patientId);
         personalInfoEntity.setDeleted(false);
         repository.saveAndFlush(personalInfoEntity);
@@ -44,7 +44,7 @@ public class PersonalInfoService {
         if (personalInfoEntity == null)
             return create(personalInfo);
 
-        PersonalInfoUlti.info2Entity(personalInfoEntity, personalInfo);
+        PersonalInfoUtil.info2Entity(personalInfoEntity, personalInfo);
         repository.saveAndFlush(personalInfoEntity);
         return patientId;
     }
@@ -53,18 +53,18 @@ public class PersonalInfoService {
         PersonalInfoEntity entity = repository.findByPatientIdAndDeleted(patientId, false);
         if (entity == null)
             throw new PersonalInfoException(PATIENT_NOT_FOUND, patientId);
-        return PersonalInfoUlti.entity2Info(entity);
+        return PersonalInfoUtil.entity2Info(entity);
     }
 
     public List<PersonalInfo> searchPatientsByName(String patientName) {
         if(patientName == null)
             return repository.findAll()
                     .stream()
-                    .map(PersonalInfoUlti::entity2Info)
+                    .map(PersonalInfoUtil::entity2Info)
                     .collect(Collectors.toList());
         return repository.searchByName(patientName)
                 .stream()
-                .map(PersonalInfoUlti::entity2Info)
+                .map(PersonalInfoUtil::entity2Info)
                 .collect(Collectors.toList());
     }
 
@@ -73,7 +73,7 @@ public class PersonalInfoService {
             return new ArrayList<>();
         return repository.findMultiByPatientIds(ids).
                 stream().
-                map(PersonalInfoUlti::entity2Info).
+                map(PersonalInfoUtil::entity2Info).
                 collect(Collectors.toList());
     }
 }
