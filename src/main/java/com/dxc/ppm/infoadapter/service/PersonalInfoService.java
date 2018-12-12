@@ -1,10 +1,10 @@
-package com.dxc.ppm.nurseadapter.service;
+package com.dxc.ppm.infoadapter.service;
 
-import com.dxc.ppm.nurseadapter.api.model.PersonalInfo;
-import com.dxc.ppm.nurseadapter.exception.PersonalInfoException;
-import com.dxc.ppm.nurseadapter.model.PersonalInfoEntity;
-import com.dxc.ppm.nurseadapter.repository.PersonalInfoRepository;
-import com.dxc.ppm.nurseadapter.ulti.PersonalInfoUlti;
+import com.dxc.ppm.infoadapter.api.model.PersonalInfo;
+import com.dxc.ppm.infoadapter.exception.PersonalInfoException;
+import com.dxc.ppm.infoadapter.model.PersonalInfoEntity;
+import com.dxc.ppm.infoadapter.repository.PersonalInfoRepository;
+import com.dxc.ppm.infoadapter.ulti.PersonalInfoUlti;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.dxc.ppm.nurseadapter.common.PersonalInfoStorageError.*;
+import static com.dxc.ppm.infoadapter.common.PersonalInfoStorageError.*;
 
 @Service
 public class PersonalInfoService {

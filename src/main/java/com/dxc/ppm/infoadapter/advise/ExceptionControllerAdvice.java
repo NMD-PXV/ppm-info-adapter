@@ -1,6 +1,6 @@
-package com.dxc.ppm.nurseadapter.advise;
+package com.dxc.ppm.infoadapter.advise;
 
-import com.dxc.ppm.nurseadapter.exception.PersonalInfoException;
+import com.dxc.ppm.infoadapter.exception.PersonalInfoException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

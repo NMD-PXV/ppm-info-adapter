@@ -1,11 +1,11 @@
 swagger: "2.0"
 info:
-  description: "PPM Nurse Adapter"
+  description: "PPM Info Adapter"
   version: "1.0.0"
-  title: "PPM Nurse Adapter"
+  title: "PPM Info Adapter"
 tags:
 - name: "patients"
-  description: "Everything about Nurse Adapter"
+  description: "Everything about Personal Info"
 schemes:
 - "https"
 - "http"
@@ -41,7 +41,7 @@ paths:
         - "patients"
       summary: "find multi patient personal info"
       description: "find multi patient personal info"
-      operationId: "readMultiPatientInfoById"
+      operationId: "readMultiPatientInfoByPatientIds"
       consumes:
         - "application/json"
       parameters:

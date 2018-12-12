@@ -1,8 +1,8 @@
-package com.dxc.ppm.nurseadapter.delegate;
+package com.dxc.ppm.infoadapter.delegate;
 
-import com.dxc.ppm.nurseadapter.api.V1ApiDelegate;
-import com.dxc.ppm.nurseadapter.api.model.PersonalInfo;
-import com.dxc.ppm.nurseadapter.service.PersonalInfoService;
+import com.dxc.ppm.infoadapter.api.V1ApiDelegate;
+import com.dxc.ppm.infoadapter.api.model.PersonalInfo;
+import com.dxc.ppm.infoadapter.service.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class V1ApiDelegateImpl implements V1ApiDelegate {
 
 
     @Override
-    public ResponseEntity<List<PersonalInfo>> readMultiPatientInfoById(List<String> ids) {
+    public ResponseEntity<List<PersonalInfo>> readMultiPatientInfoByPatientIds(List<String> ids) {
         return ResponseEntity.ok(service.readMultiPatientInfoById(ids));
     }
 

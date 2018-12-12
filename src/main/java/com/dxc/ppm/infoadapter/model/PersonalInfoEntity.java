@@ -1,4 +1,4 @@
-package com.dxc.ppm.nurseadapter.model;
+package com.dxc.ppm.infoadapter.model;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -1,7 +1,7 @@
-package com.dxc.ppm.nurseadapter.exception;
+package com.dxc.ppm.infoadapter.exception;
 
 
-import com.dxc.ppm.nurseadapter.common.PersonalInfoStorageError;
+import com.dxc.ppm.infoadapter.common.PersonalInfoStorageError;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package com.dxc.ppm.nurseadapter;
+package com.dxc.ppm.infoadapter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

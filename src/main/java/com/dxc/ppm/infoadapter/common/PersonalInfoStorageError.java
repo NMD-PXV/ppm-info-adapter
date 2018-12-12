@@ -1,4 +1,4 @@
-package com.dxc.ppm.nurseadapter.common;
+package com.dxc.ppm.infoadapter.common;
 
 import org.springframework.http.HttpStatus;
 

@@ -1,7 +1,6 @@
-package com.dxc.ppm.nurseadapter.repository;
+package com.dxc.ppm.infoadapter.repository;
 
-import com.dxc.ppm.nurseadapter.api.model.PersonalInfo;
-import com.dxc.ppm.nurseadapter.model.PersonalInfoEntity;
+import com.dxc.ppm.infoadapter.model.PersonalInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
