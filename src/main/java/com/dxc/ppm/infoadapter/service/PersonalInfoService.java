@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -68,6 +69,8 @@ public class PersonalInfoService {
     }
 
     public List<PersonalInfo> readMultiPatientInfoById(List<String> ids){
+        if(ids.isEmpty())
+            return new ArrayList<>();
         return repository.findMultiByPatientIds(ids).
                 stream().
                 map(PersonalInfoUlti::entity2Info).
