@@ -25,7 +25,6 @@ public class PersonalInfoService {
 
     private Logger logger = LoggerFactory.getLogger(PersonalInfoService.class);
 
-    //TODO validate
     @Transactional
     public String create(PersonalInfo personalInfo) {
         String patientId = UUID.randomUUID().toString();
